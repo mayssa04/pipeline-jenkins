@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+        docker: 18
+    commands:
+      - echo installation phase
+      - apt-get update -y
+      - apt-get install -y maven
+      - mvn clean install
+  pre_build:
+    commands:
+      - echo Logging in to Docker Hub...
+      - docker login -u mayssa04 -p rootroot
+  build:
+    commands:
+      - echo Build started on `29-11-2020`
+      - echo Building the Docker image...
+      - docker build -t mayssa04/java:latest .
+      - docker tag mayssa04/java:latest mayssa04/java:latest
+  post_build:
+    commands:
+      - echo Build completed on `29-11-2020`
+      - echo Pushing the Docker image...
+      - docker push mayssa04/java:latest
