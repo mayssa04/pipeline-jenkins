@@ -54,8 +54,8 @@ pipeline {
         stage('Deploy to Qualite') {
             steps {
                 echo'Deploying'
-                //sh "docker stop  ${container_name}"
-                //sh "docker rm  ${container_name}"
+                sh "docker stop  ${container_name}"
+                sh "docker rm  ${container_name}"
                 sh "docker run -p 8086:8080 -d --name ${container_name} release-image:${commit_id}"
                 echo 'deployment complete'
             }
