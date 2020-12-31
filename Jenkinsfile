@@ -1,5 +1,5 @@
 def commit_id
-def container_name="feature-container"
+def container_name="release-container"
 pipeline {
     agent any
 
@@ -47,16 +47,16 @@ pipeline {
         stage(' Build Docker image') {
             steps {
                 echo 'Building....'
-                sh "docker build -t feature-image:${commit_id} ."
+                sh "docker build -t release-image:${commit_id} ."
                 echo 'build complete'
             }
         }
-        stage('Deploy to dev') {
+        stage('Deploy to Qualite') {
             steps {
                 echo'Deploying'
-                sh "docker stop  ${container_name}"
-                sh "docker rm  ${container_name}"
-                sh "docker run -p 8085:8080 -d --name ${container_name} feature-image:${commit_id}"
+                //sh "docker stop  ${container_name}"
+                //sh "docker rm  ${container_name}"
+                sh "docker run -p 8086:8080 -d --name ${container_name} release-image:${commit_id}"
                 echo 'deployment complete'
             }
         }
