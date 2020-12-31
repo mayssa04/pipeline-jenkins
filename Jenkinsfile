@@ -60,6 +60,17 @@ pipeline {
                 echo 'deployment complete'
             }
         }
+        stage('Push to the docker hub'){
+            steps {
+                echo 'Connection to dockerhub'
+                sh 'docker login -u mayssa04 -p rootroot'
+                echo 'TAG the docker image in local'
+                sh "docker tag release-image:${commit_id} mayssa04/env-qualite:0.1.0"
+                echo 'Push the docker image to dockerhub repository for ENV Qualite'
+                sh 'docker push mayssa04/env-qualite:0.1.0'
+            }
+        }
+
 
     }
 }

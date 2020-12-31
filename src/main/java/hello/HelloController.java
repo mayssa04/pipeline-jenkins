@@ -8,7 +8,7 @@ public class HelloController {
     
     @RequestMapping("/")
     public String index() {
-        return "Hi class ING-CCV3-1 , Hi Iteam University !! --> Environnement Qualité";
+        return "Hi class ING-CCV3-1 , Hi Iteam University !! --> ready to go to prod from QA";
     }
     
 }
