@@ -11,8 +11,8 @@ pipeline {
         stage('Deploy to Production') {
             steps {
                 echo'Deploying'
-                sh "docker stop  ${container_name}"
-                sh "docker rm  ${container_name}"
+                //sh "docker stop  ${container_name}"
+                //sh "docker rm  ${container_name}"
                 sh "docker run -p 8087:8080 -d --name ${container_name} mayssa04/env-qualite:0.1.0"
                 echo 'deployment complete'
             }
