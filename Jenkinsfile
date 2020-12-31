@@ -19,8 +19,8 @@ pipeline {
         }
         stage('Push to dockerhub'){
             steps {
-                echo 'Connection to docker ub'
-                sh 'docker login -u mayssa04 -p rootroot '
+                echo 'Connection to dockerhub'
+                sh 'docker login -u mayssa04 -p rootroot'
                 echo 'TAG the docker image in local'
                 sh "docker tag mayssa04/env-qualite:0.1.0 mayssa04/env-prod:v0.1.0"
                 echo 'Push the docker image to dockerhub repository for ENV Production'
